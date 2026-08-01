@@ -1,0 +1,107 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Girlfriend's Day</title>
+<style>
+body{margin:0;font-family:Arial;background:linear-gradient(#ffd6e7,#fff);overflow:hidden;display:flex;justify-content:center;align-items:center;height:100vh}
+#fx,#spark{position:fixed;inset:0;pointer-events:none}
+.container{position:relative;z-index:2;background:rgba(255,255,255,.8);padding:24px;border-radius:20px;text-align:center;max-width:700px}
+.env{width:220px;height:150px;margin:20px auto;position:relative;perspective:900px;cursor:pointer}
+.base{position:absolute;bottom:0;width:220px;height:120px;background:#f7a2bd;border-radius:0 0 12px 12px}
+.flap{position:absolute;width:220px;height:70px;background:#ff6b9a;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:.8s;z-index:3}
+.paper{position:absolute;left:20px;top:35px;width:180px;height:105px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;transition:.8s;z-index:2}
+.open .flap{transform:rotateX(180deg)}
+.open .paper{transform:translateY(-110px)}
+#msg{display:none;background:#fff;padding:15px;border-radius:10px;max-height:220px;overflow:auto}
+.spark{position:absolute;width:4px;height:4px;background:gold;border-radius:50%;animation:sp .9s linear forwards}
+@keyframes sp{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.fw{position:absolute;width:5px;height:5px;border-radius:50%;background:hsl(var(--h),100%,50%);animation:fw 1.2s ease-out forwards}
+@keyframes fw{to{transform:translate(var(--x),var(--y));opacity:0}}
+
+</style></head><body>
+    <audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+</audio>
+<canvas id="fx"></canvas><div id="spark"></div>
+<audio id="bgMusic" loop><source src="love.mp3"></audio>
+<div class="container">
+<h1>🌹 Happy Girlfriend's Day ❤️</h1>
+<img src="flower.jpg" width="220"><br>
+<div class="env" onclick="toggleLetter(this)">
+<div class="flap"></div><div class="base"></div><div class="paper">💌 Click Me</div>
+</div>
+<div id="msg"><h2>My Baby ❤️</h2><<div class="love-letter">
+
+    p> Hi baby, happy Girlfriend's Day! ❤️</p>
+
+    <p>
+        I'm sorry that I can't give you a real bouquet right now, but I promise
+        that once I have the means, I'll give you all the flowers, gifts, and
+        little things you've always wanted. For now, I hope this message can
+        remind you of how much you truly mean to me.
+    </p>
+
+    <p>
+        I want to take this chance to tell you just how much I love you. From
+        the very beginning until now, and for as long as we're together, my
+        love for you has only continued to grow stronger.
+    </p>
+
+    <p>
+        I know things haven't been easy for us lately. We've had our struggles
+        and difficult days, but thank you for staying by my side. Thank you for
+        understanding me even when I'm hard to understand, for being patient
+        with me, and for loving me unconditionally despite my flaws and
+        imperfections.
+    </p>
+
+    <p>
+        Thank you for every sacrifice you've made for me. Thank you for all the
+        little things you do without me even asking—the small acts of love,
+        your sweet messages, your time, your care, and your constant support.
+        Those little things may seem simple, but they mean the world to me, and
+        I never take them for granted.
+    </p>
+
+    <p>
+        I am so happy and grateful that you are my heart, my safe place, my
+        comfort, my peace, my solace, my moon, and the most beautiful part of
+        my life. You make my days brighter, my worries lighter, and my life so
+        much happier just by being in it.
+    </p>
+
+    <p>
+        No matter what challenges come our way, I hope we continue to choose
+        each other every single day. I promise to keep loving you, supporting
+        you, and growing with you. Thank you for being the most amazing
+        girlfriend I could ever ask for.
+    </p>
+
+    <p>
+        I love you more than words can ever express. Happy Girlfriend's Day
+        once again, my love. I can't wait for the day I can finally spoil you
+        with everything you deserve. Until then, please know that you'll always
+        have my heart. ❤️
+    </p>
+</div><h3 style="text-align:center;color:#d63384">Forever Yours ❤️</h3></div>
+</div>
+<script>
+const c=document.getElementById('fx'),ctx=c.getContext('2d');function rs(){c.width=innerWidth;c.height=innerHeight}rs();onresize=rs;
+function burst(el){
+ let r=el.getBoundingClientRect();
+ for(let i=0;i<30;i++){let s=document.createElement('div');s.className='spark';s.style.left=(r.left+r.width/2)+'px';s.style.top=(r.top+r.height/2)+'px';s.style.setProperty('--x',(Math.random()*180-90)+'px');s.style.setProperty('--y',(Math.random()*180-90)+'px');spark.appendChild(s);setTimeout(()=>s.remove(),900);}
+}
+function fireworks(){
+ for(let n=0;n<6;n++)setTimeout(()=>{
+ let x=Math.random()*innerWidth,y=Math.random()*innerHeight*.5+50,h=Math.random()*360;
+ for(let i=0;i<40;i++){let p=document.createElement('div');p.className='fw';p.style.left=x+'px';p.style.top=y+'px';p.style.setProperty('--h',h);let a=Math.random()*Math.PI*2,d=60+Math.random()*90;p.style.setProperty('--x',Math.cos(a)*d+'px');p.style.setProperty('--y',Math.sin(a)*d+'px');document.body.appendChild(p);setTimeout(()=>p.remove(),1200);}
+ },n*500);
+}
+function toggleLetter(e){
+ e.classList.toggle('open');
+ let m=document.getElementById('msg');
+ m.style.display=m.style.display==='block'?'none':'block';
+ burst(e);
+ let music=document.getElementById('bgMusic'); if(music.paused) music.play().catch(()=>{});
+ if(m.style.display==='block') setTimeout(fireworks,1000);
+}
+</script></body></html>
